@@ -10,5 +10,5 @@ app.use("/api/v1", router);
 
 connectDB();
 app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
+    console.log(`Server is listening on port: ${port}`);
 });

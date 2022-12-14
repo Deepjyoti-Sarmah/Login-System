@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+# mongoDB services
+  mongo_db: 
+    # conatiner_name: db_container
+    image: mongo:latest
+    restart: always
+    volumes: 
+      - mongo_db:/data/db
+
+# NodeJS API service
+  api:
+    build: .
+    ports:
+      - 4000:5000  
+    volumes:
+      - .:/app
+    environment:
+      PORT: 5000
+      MONGO_URL: mongodb+srv://DeepjyotiSarmahLoginSystem:DeepjyotiSarmahLoginSystem@cluster0.mlkjwqk.mongodb.net/?retryWrites=true&w=majority
+      DB_NAME: test
+      NAME: loginmodels
+    depends_on:
+      - mongo_db
+
+volumes:
+  mongo_db: {}
